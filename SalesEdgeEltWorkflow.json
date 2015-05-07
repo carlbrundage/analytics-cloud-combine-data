@@ -1,0 +1,68 @@
+{
+  "101_Load_Account": {
+    "action": "sfdcDigest",
+    "parameters": {
+      "object": "Account",
+      "fields": [
+        {
+          "name": "Id"
+        },
+        {
+          "name": "Name"
+        },
+        {
+          "name": "Type"
+        },
+        {
+          "name": "Industry"
+        },
+        {
+          "name": "Region__c"
+        }
+      ]
+    }
+  },
+  "102_Register_Account": {
+    "action": "sfdcRegister",
+    "parameters": {
+      "source": "101_Load_Account",
+      "alias": "Account",
+      "name": "Account"
+    }
+  },
+  "200_Sales_Data": {
+    "action": "edgemart",
+    "parameters": {
+      "alias": "Sales_Data"
+    }
+  },
+  "201_Combine_Sales_Account": {
+    "action": "augment",
+    "parameters": {
+      "relationship": "Sales",
+      "left_key": [
+        "Account"
+      ],
+      "right_key": [
+        "Name"
+      ],
+      "left": "200_Sales_Data",
+      "right": "101_Load_Account",
+      "right_select": [
+        "Id",
+        "Name",
+        "Type",
+        "Industry",
+        "Region__c"
+      ]
+    }
+  },
+  "202_Register_Account_Sales_Dataset": {
+    "action": "sfdcRegister",
+    "parameters": {
+      "source": "201_Combine_Sales_Account",
+      "alias": "SalesWithAccounts",
+      "name": "Sales With Accounts"
+    }
+  }
+}

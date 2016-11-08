@@ -1,0 +1,47 @@
+{
+  "objects": [
+    {
+      "connector": "CSV",
+      "fullyQualifiedName": "Sales_Data_Identity_csv",
+      "label": "Sales Data Identity.csv",
+      "name": "Sales_Data_Identity_csv",
+      "fields": [
+        {
+          "fullyQualifiedName": "ID",
+          "name": "ID",
+          "type": "Text",
+          "label": "ID",
+          "isUniqueId" : true
+        },
+        {
+          "fullyQualifiedName": "Account",
+          "name": "Account",
+          "type": "Text",
+          "label": "Account"
+        },
+        {
+          "fullyQualifiedName": "Product",
+          "name": "Product",
+          "type": "Text",
+          "label": "Product"
+        },
+        {
+          "fullyQualifiedName": "Period",
+          "name": "Period",
+          "type": "Date",
+          "label": "Period",
+          "format": "MM/dd/yyyy"
+        },
+        {
+          "fullyQualifiedName": "Price",
+          "name": "Price",
+          "type": "Numeric",
+          "label": "Price",
+          "precision": 18,
+          "defaultValue": "0",
+          "scale": 2
+        }
+      ]
+    }
+  ]
+}
